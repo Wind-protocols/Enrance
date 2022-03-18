@@ -1,4 +1,4 @@
-# Solpalace
+# Entrance V1 
 
 ## Getting Started
 
@@ -13,3 +13,9 @@ Start the dev server,
 ```bash
 $ yarn start
 ```
+
+## How to use it 
+https://wind-document.vercel.app/Participate
+
+
+## How does it work 
