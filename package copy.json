@@ -1,0 +1,103 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "cross-env umi dev",
+    "dev": "yarn start:dev",
+    "start:dev": "cross-env REACT_APP_ENV=dev MOCK=none umi dev",
+    "start:main": "cross-env REACT_APP_ENV=prd MOCK=none umi dev",
+    "build": "cross-env REACT_APP_ENV=dev umi build",
+    "build:main": "cross-env REACT_APP_ENV=prd umi build",
+    "postinstall": "umi generate tmp",
+    "prettier": "prettier -c --write \"**/*\"",
+    "test": "umi-test",
+    "test:coverage": "umi-test --coverage",
+    "lint-staged": "lint-staged",
+    "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ./src",
+    "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src && yarn lint:style",
+    "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "lint:fixJs": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src ",
+    "lint:prettier": "prettier --check \"**/*\" --end-of-line auto",
+    "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
+    "prepare": "husky install",
+    "temp": "node scripts/template",
+    "speedMeasure": "cross-env SPEED_MEASURE=CONSOLE umi build",
+    "deploy": "node ./scripts/deploy.js",
+    "deploy:main": "cross-env REACT_APP_ENV=prd node ./scripts/deploy.js",
+    "deploy:dev": "cross-env REACT_APP_ENV=dev node ./scripts/deploy.js"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "dependencies": {
+    "@project-serum/anchor": "^0.17.1-beta.1",
+    "@react-hook/window-size": "^3.0.7",
+    "@reduxjs/toolkit": "^1.6.1",
+    "@solana/spl-token": "^0.1.8",
+    "@solana/wallet-adapter-base": "^0.6.0",
+    "@solana/wallet-adapter-react": "^0.12.5",
+    "@solana/wallet-adapter-wallets": "^0.10.1",
+    "@solana/web3.js": "^1.29.2",
+    "ahooks": "^2.10.6",
+    "amazon-cognito-identity-js": "^5.2.3",
+    "antd": "^4.16.13",
+    "aws-amplify": "^4.3.6",
+    "aws-sdk": "^2.1028.0",
+    "i18next": "^21.0.2",
+    "i18next-browser-languagedetector": "^6.1.2",
+    "query-string": "^7.0.1",
+    "react": "^17.0.2",
+    "react-dom": "17.x",
+    "react-hot-toast": "^2.1.1",
+    "react-i18next": "^11.12.0",
+    "react-player": "^2.9.0",
+    "react-redux": "^7.2.5",
+    "store2": "^2.12.0",
+    "umi": "^3.5.19",
+    "umi-request": "^1.4.0"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^2.0.4",
+    "@types/classnames": "^2.2.11",
+    "@types/clone": "^2.1.0",
+    "@types/react": "^17.0.30",
+    "@types/react-dom": "^17.x",
+    "@types/react-is": "^17.0.2",
+    "@umijs/fabric": "^2.5.7",
+    "@umijs/plugin-sass": "^1.1.1",
+    "@umijs/test": "^3.4.5",
+    "chalk": "^4.1.2",
+    "classnames": "^2.2.6",
+    "cross-env": "^7.0.3",
+    "husky": "^7.0.2",
+    "lint-staged": "^10.5.4",
+    "ora": "5.0.0",
+    "postcss-px-to-viewport": "^1.1.1",
+    "prettier": "^2.2.1",
+    "react-is": "^17.0.2",
+    "ssh2-sftp-client": "^7.1.0",
+    "typescript": "^4.2.3"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": "yarn lint-staged:js",
+    "**/*.{js,jsx,tsx,ts,less,scss,md,json}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=10.13.0"
+  },
+  "checkFiles": [
+    "src/**/*.js*",
+    "src/**/*.ts*",
+    "src/**/*.tsx*",
+    "src/**/*.scss",
+    "src/**/*.less",
+    "config/**/*.js*",
+    "scripts/**/*.js"
+  ]
+}
